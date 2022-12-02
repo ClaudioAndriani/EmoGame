@@ -1,0 +1,601 @@
+:root {
+  --viola-scuro: rgb(94, 80, 182);
+  --viola-chiaro: slateblue;
+  --viola-piu-chiaro: rgb(116, 99, 231);
+  --modal-background: #d1d1d1;
+  --button-background: #f1f1f1;
+  --error-color: rgb(204, 0, 0);
+}
+
+.appHeader {
+  text-align: left;
+  padding: 0 1em;
+  color: var(--viola-chiaro);
+  border-bottom: 2px solid var(--viola-chiaro);
+  margin-top: 0;
+  display: flex;
+  align-content: space-between;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--modal-background);
+  padding: 1rem;
+  border-radius: 15px;
+}
+
+.modal * {
+  margin: 0.7em 0 0 0;
+  font-size: 30px;
+}
+
+.modal > :first-child {
+  margin: 0;
+}
+
+.titleHeader {
+  color: var(--viola-chiaro);
+}
+
+.App {
+  text-align: center;
+}
+
+input {
+  border-radius: 10px;
+  /* padding-left: 0.2em; */
+  border: 0;
+}
+
+button {
+  background-color: var(--button-background);
+  color: var(--viola-scuro);
+  border-radius: 10px;
+  padding: 0.2em 0.5em;
+  border-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+button:hover {
+  color: var(--button-background);
+  background-color: var(--viola-chiaro);
+}
+
+button:active {
+  color: var(--button-background);
+  background-color: var(--viola-scuro);
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: white;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.appHeaderLeft {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.headerNav {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 1em;
+  text-align:justify;
+  font-size: large;
+}
+
+.headerNav * {
+  margin: 0 0.5em;
+  padding: 5px;
+  text-align: center;
+}
+
+.headerNav *:hover {
+  color: var(--button-background);
+  background-color: var(--viola-chiaro);
+}
+
+.headerNav *:active {
+  color: var(--button-background);
+  background-color: var(--viola-scuro);
+}
+
+.headerNav a {
+  color: var(--viola-scuro);
+  text-decoration: none;
+  border-radius: 30px;
+  border: 2px solid var(--viola-scuro);
+}
+
+.navActive {
+  color: white !important;
+  background-color: var(--viola-piu-chiaro);
+}
+
+.datalistCategoryClass {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin-top: 0;
+}
+
+.catList {
+  background-color: var(--button-background);
+  color: var(--viola-scuro);
+  border-radius: 10px;
+  padding: 0.2em 0.5em;
+  border-color: rgba(0, 0, 0, 0);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.catList:hover {
+  color: var(--button-background);
+  background-color: var(--viola-chiaro);
+}
+
+.catList:active {
+  color: var(--button-background);
+  background-color: var(--viola-scuro);
+}
+
+.datalistCategoryClass button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.buttonGroup * {
+  margin: 0, 1em;
+  font-size: 30px;
+}
+
+.buttonGroup > :first-child {
+  margin: 0 0 0 0;
+}
+
+.buttonGroup > :last-child {
+  margin: 0 0 0 1em;
+}
+
+.input_container {
+  border: 1px solid #e5e5e5;
+}
+
+input[type=file]::file-selector-button {
+  background-color: var(--button-background);
+  color: var(--viola-chiaro);
+  border: 0px;
+  border-radius: 15px;
+  padding: 10px 15px;
+  margin-right: 20px;
+  margin-left: 0;
+}
+
+input[type=file]::file-selector-button:hover {
+  color: var(--button-background);
+  background-color: var(--viola-chiaro);
+}
+
+.inputFileDiv {
+  color: var(--viola-chiaro);
+  margin-top: 0;
+  padding-left: 0 !important;
+}
+
+.textField {
+  padding: 10px 15px;
+}
+
+.errorMsg {
+  color: var(--error-color);
+  font-size: large;
+  max-width: fit-content;
+  text-align: left;
+}
+
+.nonVisible {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+.modalHint {
+  font-size: large;
+  color: var(--viola-scuro);
+}
+
+.categoryVisualizer {
+  margin-top: 0.3em; 
+  padding: 0.3em;
+}
+
+.categoryVisualizerName {
+  font-size: large;
+  text-align: left;
+  margin-top: 0;
+}
+
+.stimulusVisualizer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 150px);
+  font-size: medium;
+  row-gap: 0.5em;
+}
+
+.stimulusVisualizerHover {
+  border-radius: 15px;
+  border: 3px solid rgba(0, 0, 0, 0);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 150px);
+  font-size: medium;
+  row-gap: 0.5em;
+  padding: 0.3em 0;
+}
+
+.stimulusVisualizerHover:hover {
+  border-radius: 15px;
+  border: 3px solid rgb(151, 135, 253);
+}
+
+.stimulusVisualizerSelected  {
+  background-color: rgb(199, 190, 255);
+  border-radius: 15px;
+}
+
+.stimulusList {
+  color: var(--viola-scuro);
+  background-color: var(--button-background);
+  border-radius: 15px;
+  padding: 0 0.5em 0.5em 0.5em;
+  max-height: 60vh;
+  overflow-y: scroll;
+  width: 60vw;
+  font-size: large !important;
+}
+
+.stimulusList .categoryVisualizer {
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid var(--viola-scuro);
+}
+
+.stimuliImgDiv {
+  width: 100%;
+  height: 50px;
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center;
+  margin-top: 0;
+}
+
+.stimuliImg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50px;
+}
+
+.stimulusIconDiv {
+  margin: 0 0.3em;
+  border: 1px solid var(--viola-scuro);
+  border-radius: 15px;
+  padding: 0.4em;
+  font-size: large;
+}
+
+.stimulusIconDiv:hover {
+  background-color: var(--viola-chiaro);
+  color: white;
+}
+
+.stimulusIconNoHover {
+  margin: 0 0.3em;
+  border: 1px solid var(--viola-scuro);
+  border-radius: 15px;
+  padding: 0.4em;
+  font-size: large;
+}
+
+.stimulusSelected {
+  background-color: var(--viola-scuro);
+  color: white;
+}
+
+.playStimulusDiv {
+  width: 75vw;
+  height: 70vh;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+.stimulusPlayImage {
+  margin: auto;
+  width: auto;
+  height: 100%;
+}
+
+.list_modal {
+  font-size: large;
+  color: var(--viola-scuro);
+  text-align: left;
+}
+
+.stimulusPlayText {
+  font-size: 23px;
+  text-align: left;
+  background-color: var(--button-background);
+  margin: 0 auto;
+  color: black;
+  border-radius: 15px;
+  padding: 0.5em;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  height: 93%;
+  width: 100%;
+}
+
+.backButton {
+  margin: 0 !important;
+  font-size: 30px;
+}
+
+.audioPlayer {
+  margin: auto;
+  width: 90%;
+}
+
+.audioPlayerContainer {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  padding: 1em 0;
+}
+
+.orderArrows {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin-top: 0 !important;
+  position: relative;
+  top: -0.3em;
+  margin-right: 0.4em;
+}
+
+.upOrderArrow img, .downOrderArrow img {
+  height: 0.5em !important;
+  width: fit-content !important;
+}
+
+.upOrderArrow, .downOrderArrow {
+  height: 1em;
+  width: fit-content !important;
+  margin-top: 0;
+}
+
+.downOrderArrow {
+  vertical-align: top;
+}
+
+.upOrderArrow img, .downOrderArrow img, .upOrderArrow, .downOrderArrow {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.upOrderArrow:hover {
+  background-color: var(--button-background) !important;
+}
+
+.downOrderArrow:hover {
+  background-color: var(--button-background) !important;
+}
+
+.GStimulusRowDiv {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.GStimulusRowDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  justify-content: center;
+  width: 100%;
+}
+
+.GStimulusRowDiv * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+input[type=time] {
+  width: 6em
+}
+
+.GStimulusRowDiv p {
+  width: 100%;
+  text-align: left;
+  padding-left: 0.5em;
+}
+
+.GStimulusRowName {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.GStimulusRowDiv {
+  width: 100%;
+  border-bottom: 1px solid var(--viola-chiaro);
+  border-top: 1px solid var(--viola-chiaro);
+}
+
+.stimulusDescriptorImage {
+  position: relative;
+  top: 0.55em;
+  width: 1.5em;
+}
+
+.StimulusAddDownDiv, .StimulusRemoveDiv {
+  margin: 0;
+}
+
+.StimulusAddDownDiv *, .StimulusRemoveDiv * {
+  margin: 0;
+}
+
+.GStimulusRowDiv {
+  align-items: baseline;
+  padding: 0.25em 0;
+}
+
+input[type=number] {
+  width: 2.5em;
+}
+
+.logoImage {
+  display: inline-block;
+  align-items: center;
+  vertical-align: middle;
+  height: 60px;
+}
+
+.gameEditor {
+  width: 50vw !important;
+}
+
+.GStimuluRow {
+  color: var(--viola-scuro);
+  background-color: var(--button-background);
+  border-radius: 15px;
+  padding: 0 0.5em 0.5em 0.5em;
+  max-height: 60vh;
+  overflow-y: scroll;
+  font-size: large !important;
+  padding-top: 0.2em;
+}
+
+.PlayGameStimulusTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 0 !important;
+}
+
+.PlayGameStimulusTitle * {
+  margin-top: 0 !important;
+}
+
+
+
+
+
+.progressBar {
+  height: 1em;
+}
+
+.wrapperProgressBar {
+  /*border: 3px solid blue;*/
+  border-radius: 15px;
+  background-color: var(--button-background);
+  width: 80%;
+  margin: auto;
+}
+
+
+.barCompletedProgressBar {
+  background-color: var(--viola-scuro);
+  border-radius: 15px;
+}
+
+
+input[type='checkbox'] {
+  margin-right: 0.3em;
+  width: 0.6em;
+  height: 0.6em;
+}
+
+.checkboxDiv {
+  display: flex;
+  margin-left: 0 !important;
+  margin-top: 0 !important;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.checkboxDiv > label {
+  align-content: baseline;
+  margin-left: 0;
+  font-size: 25px !important;
+}
+
+.hideVideo {
+  width: 0;
+  height: 0;
+}
+
+.csvLinkToButton {
+  background-color: var(--button-background);
+  color: var(--viola-scuro);
+  border-radius: 10px;
+  padding: 0.2em 0.5em;
+  border-color: rgba(0, 0, 0, 0);
+  text-decoration: none;
+}
+
+.csvLinkToButton:hover {
+  color: var(--button-background);
+  background-color: var(--viola-chiaro);
+}
+
+.csvLinkToButton:active {
+  color: var(--button-background);
+  background-color: var(--viola-scuro);
+}
+
+.downloadLabel {
+  color: var(--viola-chiaro);
+  font-size: 25px;
+}
+
+.saveMatchBtn {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
