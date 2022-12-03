@@ -176,7 +176,6 @@ const logActivity = (activity) => {
 
 
 app.post('/is_stimulus_name_in_db', async (req, res) => {
-    console.log('la richiesta')
     res = applyMiddleware(res)
     evalRequest(req, (data) => {
         let valid = false;
@@ -271,18 +270,6 @@ app.get("/get_stimulus_categories", (req, res) => {
     })
 })
 
-/*
-app.post("/add_stimulus", (req, res) => {
-    res = applyMiddleware(res)
-
-    evalRequest(req, (data) => {
-        store_file(req);
-        logActivity('tentativo di aggiungere un nuovo stimolo ' + (valid ? ' riuscito' : ' fallito'))
-        res.send({valid})
-    })
-})
-*/
-
 app.post("/add_stimulus_category", (req, res) => {
     res = applyMiddleware(res)
 
@@ -293,7 +280,6 @@ app.post("/add_stimulus_category", (req, res) => {
             WHERE name = '${data.newCat}';
         `
         con.query(query, (err, result, fields) => {
-            console.log(result)
             if (result.length === 0) {
                 query = `
                     INSERT INTO category(name)
@@ -301,7 +287,6 @@ app.post("/add_stimulus_category", (req, res) => {
                 `
                 con.query(query, (err, result, fields) => {
                     if (err) throw err;
-                    console.log(result)
                     const valid = result.affectedRows === 1;
                     logActivity('tentativo di aggiungere una nuova categoria di stimoli  ' + (valid ? ' riuscito' : ' fallito'))
                     res.send({valid})
@@ -324,7 +309,6 @@ app.get("/get_all_stimulus", (req, res) => {
     `
     con.query(query, (err, result, fields) => { 
         if (err) throw err; 
-        //console.log(result)
         let catStimObj = {}
         result.forEach(row => {
         if (row.CategoryName in catStimObj) {
@@ -334,7 +318,6 @@ app.get("/get_all_stimulus", (req, res) => {
         }
         })
 
-        //console.log(catStimObj)
 
         let stimulusList = []
         for (const cat in catStimObj) {
@@ -343,8 +326,6 @@ app.get("/get_all_stimulus", (req, res) => {
             stimuli: catStimObj[cat],
         })
         }
-
-        //console.log(stimulusList)
         res.send({
             valid:true,
             stimulusList,
@@ -419,7 +400,6 @@ app.post("/add_update_game", (req, res) => {
                     WHERE game.name = '${gameName}';
                 `
             }
-            console.log(query)
             con.query(query, (err, result, fields) => {
                 if (err) throw err;
                 
@@ -448,11 +428,9 @@ app.post("/add_update_game", (req, res) => {
                             }
                             else {
                                 const gameId = result[0].idGame
-                                console.log("idGame", result, gameId)
                                 let ok = true;
                                 for (let i = 0; i < rows.length; i++) {
                                     const row = rows[i];
-                                    console.log(row)
                                     if (!ok) {
                                         const error = 'errore nell\'inserimento di uno stimolo nel gioco'
                                         console.log(error)
@@ -468,7 +446,6 @@ app.post("/add_update_game", (req, res) => {
                                     `
                                     con.query(query, (err, result, fields) => {
                                         if (err) throw err;
-                                        console.log(result)
                                         if (result.length === 0) {
                                             console.log('non esisto lo stimolo inserito ' + StimulusName)
                                             res.send({valid: false, error: 'non esisto lo stimolo inserito'})
@@ -482,17 +459,14 @@ app.post("/add_update_game", (req, res) => {
                                                 INSERT INTO gamestimulus(codGame, codStimulus, duration, indexRow)
                                                 VALUES (${gameId}, ${result[0].idStimulus}, ${duration}, ${index});
                                             `
-                                            console.log(query)
                                             con.query(query, (err, result, fields) => {
                                                 if (err) throw err;
-                                                console.log(result)
                                                 ok = true;
                                             })
                                         }
                                     })
                                 }
                                 if (ok) {
-                                    console.log('sto mandando la risposta')
                                     valid = true
                                     logActivity('tentativo di aggiunta di un gioco  ' + (valid ? ' riuscito' : ' fallito'))
                                     res.send({valid: true, ok })
@@ -570,20 +544,6 @@ app.post('/get_stimulus_duration', (req, res) => {
 })
 
 
-/*
-const exampleGames = [
-    {
-        gameName: 'game1',
-        stimuli: [
-            {
-            name: 'stimolo1',
-            thumbnail: 'assets/imageLogo.png',
-            file: '',
-            },
-        ]
-    },
-]*/
-
 app.get("/get_all_games", (req, res) => {
     
     res = applyMiddleware(res)
@@ -594,7 +554,6 @@ app.get("/get_all_games", (req, res) => {
     `
     con.query(query, (err, result, fields) => { 
         if (err) throw err; 
-        //console.log(result)
         let gameObj = {}
         result.forEach(row => {
             const tempObj = { 
@@ -611,7 +570,6 @@ app.get("/get_all_games", (req, res) => {
             }
         })
 
-        //console.log(gameObj)
 
         let gamesList = []
         for (const gameName in gameObj) {
@@ -625,7 +583,6 @@ app.get("/get_all_games", (req, res) => {
             })
         }
 
-        //console.log(gamesList)
         res.send({
             valid:true,
             gamesList,
