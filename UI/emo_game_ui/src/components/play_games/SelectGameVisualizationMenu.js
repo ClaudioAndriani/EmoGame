@@ -126,7 +126,7 @@ const SelectGameVisualizationMenu = ({
                 </div>
                 <div className='buttonGroup'>
                     <button onClick={() => navigate('/')}>Indietro</button>
-                    <button onClick={handleClickPlaySelectedGame}>Gioca selezionato</button>
+                    <button onClick={handleClickPlaySelectedGame}>Inizio gioco</button>
                 </div>
                 <p ref={noGameSelectedMsg} className='errorMsg nonVisible' style={{margin: 'auto', marginTop: '0.4em'}}>Nessun gioco selezionato, se non sono presenti giochi, crearne uno nella sezione "Aggiungi gioco"</p>
             </div>
