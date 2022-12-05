@@ -72,12 +72,23 @@ app.post("/add_stimulus", async (req, res) => {
                 if (err) throw err;
                 if (result.length > 0) {
                     const category_id = result[0]['idCategory']
-                    
+
                     let file_name = file.name.split('.')
                     const file_ext = file_name.pop()
-                    let file_id = file_name.join('').replaceAll(' ', '')
+
+                    // check if file name doesn't exceed the max value for database
+                    if (file.name.length > 90) {
+                        file_name = [makeid(30)]
+                    }
+
+                    // if file name is already present, generate a random one
+                    do {
+                        file_name = [makeid(30)]
+                    } while (fs.existsSync(file.name))
+                    
+                    let file_id = file_name.join('').replaceAll(' ', '') + makeid(5)
                     file_id.trim()
-                    const filename_final = "./stimuli/" + file_id + makeid(5) + '.' + file_ext
+                    const filename_final = "./stimuli/" + file_id + '.' + file_ext
                     file.mv(filename_final);
                     
                     query = `
