@@ -108,11 +108,13 @@ app.post("/add_stimulus", async (req, res) => {
                                     size: file.size,
                                 },
                             });
+                            logActivity('ricevuta richiesta di aggiunta di uno stimolo riuscita')
                         } else {
                             res.send({
                                 status: "error",
                                 valid: false,
                             })
+                            logActivity('ricevuta richiesta di aggiunta di uno stimolo fallita')
                         }
                     })
                 } else {
@@ -121,6 +123,7 @@ app.post("/add_stimulus", async (req, res) => {
                         message: 'Category name not present',
                         valid: false,
                     })
+                    logActivity('ricevuta richiesta di aggiunta di uno stimolo fallita')
                 }
             })
         }
@@ -138,7 +141,7 @@ var con = mysql.createConnection({
 });
 
 con.connect(function(err) {
-  if (err) throw err;
+  if (err) console.log('connessione col database fallita');
   console.log("Connected to the database!");
 });
 
@@ -278,6 +281,7 @@ app.get("/get_stimulus_categories", (req, res) => {
     con.query(query, (err, result, fields) => {
         if (err) throw err;
         res.send({categories: result.map((obj) => obj.name)})
+        logActivity('richiesta di ricevere tutte le categorie per stimoli riuscita')
     })
 })
 
@@ -303,6 +307,7 @@ app.post("/add_stimulus_category", (req, res) => {
                     res.send({valid})
                 })
             } else {
+                logActivity('tentativo di aggiungere una nuova categoria di stimoli fallito')
                 res.send({valid: false})
             }
         })
@@ -341,6 +346,7 @@ app.get("/get_all_stimulus", (req, res) => {
             valid:true,
             stimulusList,
         })
+        logActivity('richiesta di ricevere tutti gli stimoli per categoria')
     })
 })
 
@@ -352,8 +358,10 @@ app.post("/get_stimulus_file", (req, res) => {
         res.sendFile(fileName, {root: path.join(__dirname)}, function (err) {
             if (err) {
                 console.log(err);
+                logActivity('richiesta di ricevere il file di uno stimolo fallita')
                 return res.status(500).json({ success: false, message: "internal server error. please try again later" });
             } else {
+                logActivity('richiesta di ricevere il file di uno stimolo riuscita')
                 console.log("Sent:", fileName, "at", new Date().toString());
             }
         });
@@ -368,6 +376,7 @@ app.post("/get_stimulus_text", (req, res) => {
         res.send({
             text
         })
+        logActivity('richiesta di ricevere il file di testo di uno stimolo riuscita')
     })
 })
 
@@ -502,7 +511,6 @@ app.post('/delete_stimuli', (req, res) => {
         `
         con.query(query, (err, result, fields) => {
             if (err) throw err;
-            console.log(result)
             const valid = result.affectedRows > 0;
             logActivity('tentativo di rimozione degli stimoli  ' + (valid ? ' riuscito' : ' fallito'))
             res.send({valid})
@@ -532,11 +540,9 @@ audio: 3
 app.post('/get_stimulus_duration', (req, res) => {
     res = applyMiddleware(res)
     evalRequest(req, (data) => {
-        console.log('ricevuta richiesta')
 
         const {type, file_name} = data
         
-        console.log(type)
         if (type == 0) {
             res.send({valid: true, duration: 10})
         } else if (type == 1) {
@@ -551,6 +557,7 @@ app.post('/get_stimulus_duration', (req, res) => {
                 res.send({valid: true, duration: Math.round(duration)})
             })
         }
+        logActivity('richiesta di ricevere la durata di uno stimolo')
     })
 })
 
@@ -598,6 +605,7 @@ app.get("/get_all_games", (req, res) => {
             valid:true,
             gamesList,
         })
+        logActivity('richiesta di ricevere tutti gli stimoli dal database')
     })
 })
 
@@ -614,8 +622,6 @@ app.post("/get_game_stimulus_rows", (req, res) => {
     
     res = applyMiddleware(res)
     evalRequest(req, (data) => {
-        console.log('ricevuta richiesta')
-
         const gameName = data.currentGame
     
         let query = `
@@ -640,14 +646,13 @@ app.post("/get_game_stimulus_rows", (req, res) => {
             let sorted = [...stimuliList].sort((first, second) => first.index - second.index)
             for (let i = 0; i < sorted.length; i++) {
                 delete sorted[i]['index']
-            } 
-
-            console.log(sorted)
+            }
 
             res.send({
                 valid:true,
                 stimuliList: sorted,
             })
+            logActivity('richiesta di ricevere gli stimoli di un gioco')
         })
     })
 })
@@ -679,5 +684,5 @@ app.post("/delete_game", (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}, nice!`)
+  console.log(`Server listening on port ${port}`)
 })

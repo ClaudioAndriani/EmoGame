@@ -42,6 +42,7 @@ const Stimulus = ({ stimulus, currentAction, currentStimuli, setCurrentStimuli }
 
   const handleStimulusClick = async () => {
     if (!selected) {
+      stimulusRef.current.className = 'stimulusIconDiv stimulusSelected'
       if (currentAction === 'visualizeStimulus') {
         setCurrentStimuli([stimulus])
       } else {
@@ -62,7 +63,6 @@ const Stimulus = ({ stimulus, currentAction, currentStimuli, setCurrentStimuli }
         }
         setCurrentStimuli([...currentStimuli, {...stimulus, duration }])
       }
-      stimulusRef.current.className = 'stimulusIconDiv stimulusSelected'
     } else {
       if (currentAction === 'visualizeStimulus') {
         setCurrentStimuli([])
