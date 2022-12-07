@@ -1,6 +1,6 @@
 import React, {useState, useRef} from 'react'
 import { useNavigate } from 'react-router-dom';
-import { CSVLink, CSVDownload } from "react-csv";
+import { CSVLink } from "react-csv";
 
 const SaveMatch = (matchData) => {
 
