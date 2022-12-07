@@ -43,8 +43,7 @@ const SaveMatch = (matchData) => {
         :
         <></>
       }
-      <CSVLink data={csvData} headers={headers} filename={fileName + '.csv'} ref={csvLinkRef} className='csvLinkToButton'>Scarica CSV</CSVLink>
-      <CSVDownload data={csvData} target="_blank"/>
+      <CSVLink data={csvData} headers={headers} filename={fileName + '.csv'} ref={csvLinkRef} className='csvLinkToButton' target="_blank">Scarica CSV</CSVLink>
       <button className="saveMatchBtn" onClick={() => navigate('/')}>Annulla gioco</button>
     </div>
   )
