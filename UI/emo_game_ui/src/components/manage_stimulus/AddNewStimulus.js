@@ -153,8 +153,10 @@ const AddNewStimulus = ({setCurrentSection}) => {
             <button onClick={() => setCurrentSection('StimulusMenu')}>Indietro</button>
           </div>
         </div>
-        <p className='modalHint'>Per aggiungere una nuova categoria è necessario inserire il nome nella casella delle <br />
-        categorie e premere il tasto '+', il nome inserito verrà aggiunto al database</p>
+        <p className='modalHint'>
+        Per aggiungere una nuova categoria è necessario inserirne il nome<br /> 
+        nella casella delle categorie ed effettuare l'aggiunta dello stimolo, <br />
+        la categoria verrà aggiunta automaticamente insieme allo stimolo</p>
       </>
     )
 }
