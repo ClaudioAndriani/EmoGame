@@ -57,7 +57,7 @@ a.	Aggiungere uno stimolo
 b.	Visualizzare gli stimoli
 c.	Cancellare uno stimolo
 a.	Aggiungere uno stimolo
-In questa fase l’utente dovrà: scegliere un nome per lo stimolo da inserire (deve essere differente dagli stimoli già presenti nel database), inserire il file dello stimolo dal dispositivo (sono supportati solo file di tipo png, jpeg, jpg, mp4, txt, mp3 e ogg) e infine scegliere una categoria. Eventualmente, se non vi è alcuna categoria attinente allo stimolo da inserire se ne può aggiungere un’altra semplicemente scrivendo il nome di essa verrà aggiunta automaticamente. Una volta compilato il form si può effettuare l’aggiunta dello stimolo. 
+In questa fase l’utente dovrà: scegliere un nome per lo stimolo da inserire (deve essere differente dagli stimoli già presenti nel database), inserire il file dello stimolo dal dispositivo (sono supportati solo file di tipo png, jpeg, jpg, mp4, txt, mp3 e ogg) e infine scegliere una categoria. Eventualmente, se non vi è alcuna categoria attinente allo stimolo da inserire se ne può aggiungere un’altra semplicemente scrivendo il nome di essa e verrà aggiunta automaticamente. Una volta compilato il form si può effettuare l’aggiunta dello stimolo. 
 
 ![image](https://user-images.githubusercontent.com/79840292/206242658-dedeb4a4-a5fa-43a2-bba6-d70ec2227f5e.png)
 
