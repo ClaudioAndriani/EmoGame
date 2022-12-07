@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import SelectGameVisualizationMenu from '../components/play_games/SelectGameVisualizationMenu'
 import PlayGameStimulus from '../components/play_games/PlayGameStimulus'
 import SaveMatch from '../components/play_games/SaveMatch'
+import EndGameScreen from '../components/play_games/EndGameScreen'
 
 const PlayGame = () => {
   const [currentSection, setCurrentSection] = useState("SelectGameVisualizationMenu")
@@ -42,14 +43,17 @@ const PlayGame = () => {
       recordedChunks={recordedChunks}
       setRecordedChunks={setRecordedChunks}
       />,
-    "SaveMatch": <SaveMatch
-      matchData={matchData}
-      setMatchData={setMatchData}
-      currentGame={currentGame} 
-      player={player} 
-      recordedChunks={recordedChunks}
-      setRecordedChunks={setRecordedChunks}
-    />
+    "EndGameScreen": <EndGameScreen
+      setCurrentSection={setCurrentSection}
+    />, 
+      "SaveMatch": <SaveMatch
+        matchData={matchData}
+        setMatchData={setMatchData}
+        currentGame={currentGame} 
+        player={player} 
+        recordedChunks={recordedChunks}
+        setRecordedChunks={setRecordedChunks}
+      />,
   }
   return <>{sections[currentSection]}</> 
 }

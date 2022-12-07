@@ -118,7 +118,7 @@ const PlayGameStimulus = ({
                                 handleStopCapture()
                             }
                             setCurrentIndex(0)
-                            setCurrentSection('SaveMatch')
+                            setCurrentSection('EndGameScreen')
                         }
                         clearInterval(intervalN)
                         intervalN = null;

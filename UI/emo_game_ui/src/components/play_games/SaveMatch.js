@@ -2,9 +2,7 @@ import React, {useState, useRef} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { CSVLink, CSVDownload } from "react-csv";
 
-const SaveMatch = (
-  matchData,
-) => {
+const SaveMatch = (matchData) => {
 
   const normalizeString = string => string.replaceAll(' ', '_').replaceAll('\t', '_')
 
