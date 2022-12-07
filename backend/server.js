@@ -142,7 +142,7 @@ var con = mysql.createConnection({
 
 con.connect(function(err) {
   if (err) console.log('connessione col database fallita');
-  console.log("Connected to the database!");
+  else console.log("Connected to the database!");
 });
 
 const port = 8080

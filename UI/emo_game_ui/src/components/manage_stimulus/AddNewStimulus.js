@@ -39,10 +39,8 @@ const AddNewStimulus = ({setCurrentSection}) => {
       emptyFieldsMsg.current.className = 'errorMsg visible'
     }
 
-    if (ok && !categoriesList.includes(catRef.current.value)) {
-      setOk2Add(false)
-      ok = false
-      catNonValidMsg.current.className = 'errorMsg visible'
+    if (!categoriesList.includes(catRef.current.value)) {
+      await handleAddCat()
     }
 
     if (ok) {
@@ -147,7 +145,6 @@ const AddNewStimulus = ({setCurrentSection}) => {
                 categoriesList.map((element) => <option value={element} key={element} />) 
               }
             </datalist>
-            <button onClick={handleAddCat}>+</button>
           </div>
           <p ref={catNonValidMsg} className='errorMsg nonVisible'>La categoria non è presente, aggiungerla al database, prima di aggiungere lo stimolo</p>
           <div className='buttonGroup'>
